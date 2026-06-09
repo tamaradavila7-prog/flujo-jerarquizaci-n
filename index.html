@@ -1,0 +1,773 @@
+
+
+¡Sí, claro que se puede! Te voy a dar el código en **HTML + CSS + JavaScript** para que tengas un flujo interactivo, bonito y funcional, muy similar a tu imagen.
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta del Proceso de Jerarquización</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            color: #1a2a3a;
+            min-height: 100vh;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #0b2545 0%, #13315c 50%, #134074 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 20px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 35px;
+            top: 40px;
+            bottom: 40px;
+            width: 4px;
+            background: linear-gradient(to bottom, #d4af37, #0b2545, #d4af37);
+            border-radius: 2px;
+        }
+
+        /* ===== STEP CARD ===== */
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: fadeInLeft 0.6s ease forwards;
+        }
+
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
+        .step:nth-child(4) { animation-delay: 0.4s; }
+        .step:nth-child(5) { animation-delay: 0.5s; }
+        .step:nth-child(6) { animation-delay: 0.6s; }
+        .step:nth-child(7) { animation-delay: 0.7s; }
+        .step:nth-child(8) { animation-delay: 0.8s; }
+        .step:nth-child(9) { animation-delay: 0.9s; }
+        .step:nth-child(10) { animation-delay: 1.0s; }
+
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+            background: linear-gradient(135deg, #d4af37, #b8960c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.15);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        .step-content {
+            flex: 1;
+            margin-left: 20px;
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid #0b2545;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -5px;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(to bottom, #d4af37, #b8960c);
+            transition: height 0.4s ease;
+        }
+
+        .step:hover .step-content::before {
+            height: 100%;
+        }
+
+        .step:hover .step-content {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border-left-color: #d4af37;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .step-icon {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            background: linear-gradient(135deg, #0b2545, #134074);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0b2545;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: #5a6a7a;
+            line-height: 1.6;
+            margin-top: 5px;
+        }
+
+        /* ===== EXPANDABLE DETAIL ===== */
+        .step-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: #f8f9fb;
+            border-radius: 10px;
+            margin-top: 0;
+        }
+
+        .step-detail.active {
+            max-height: 300px;
+            padding: 15px;
+            margin-top: 12px;
+        }
+
+        .step-detail p {
+            font-size: 0.85rem;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .step-detail .detail-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #0b2545, #134074);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .step-detail .detail-link:hover {
+            background: linear-gradient(135deg, #d4af37, #b8960c);
+            transform: translateY(-2px);
+        }
+
+        .click-hint {
+            font-size: 0.75rem;
+            color: #d4af37;
+            font-weight: 600;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ===== COMPLETION BOX ===== */
+        .completion-box {
+            background: linear-gradient(135deg, #0b2545, #134074);
+            color: white;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 10px;
+            margin-left: 90px;
+            box-shadow: 0 4px 20px rgba(11, 37, 69, 0.3);
+        }
+
+        .completion-box .check-icon {
+            width: 50px;
+            height: 50px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 1.5rem;
+        }
+
+        .completion-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .completion-box p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid #0b2545;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .sidebar-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0b2545;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .sidebar-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: linear-gradient(135deg, #0b2545, #134074);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .sidebar-item p {
+            font-size: 0.85rem;
+            color: #5a6a7a;
+            line-height: 1.6;
+        }
+
+        /* ===== SUPPORT CARD ===== */
+        .support-card {
+            border-top-color: #d4af37 !important;
+            background: linear-gradient(135deg, #fffdf5, #fff9e6) !important;
+        }
+
+        .support-card .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #0b2545;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 8px 0;
+            border-bottom: 2px solid #d4af37;
+            transition: color 0.3s ease;
+        }
+
+        .support-card .email-link:hover {
+            color: #d4af37;
+        }
+
+        /* ===== FOOTER NOTE ===== */
+        .footer-note {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 20px 30px;
+            background: white;
+            border-radius: 12px;
+            border-left: 5px solid #d4af37;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .footer-note .warning-icon {
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+
+        .footer-note p {
+            font-size: 0.85rem;
+            color: #5a6a7a;
+            line-height: 1.6;
+        }
+
+        .footer-note strong {
+            color: #0b2545;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .sidebar {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.4rem;
+            }
+
+            .step-number {
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
+                font-size: 1.1rem;
+            }
+
+            .step-content {
+                padding: 18px;
+            }
+
+            .timeline::before {
+                left: 25px;
+            }
+
+            .completion-box {
+                margin-left: 70px;
+            }
+
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1>📋 RUTA DEL PROCESO DE JERARQUIZACIÓN</h1>
+        <p>Resumen del proceso desde la preparación hasta la formalización.</p>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+
+        <!-- TIMELINE (Left Column) -->
+        <div class="timeline">
+
+            <!-- PASO 1 -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content" onclick="toggleDetail(this)">
+                    <div class="step-header">
+                        <div class="step-icon">📑</div>
+                        <div class="step-title">Preparación de Antecedentes</div>
+                    </div>
+                    <p class="step-description">Reunir evidencia, actualizar CV USS y preparar la carta de postulación.</p>
+                    <div class="click-hint">👆 Clic para más detalles</div>
+                    <div class="step-detail">
+                        <p>Asegúrese de tener todos los documentos al día: certificados, publicaciones, evidencias de docencia, investigación y gestión. Actualice su CV en la plataforma SGCA antes de iniciar la postulación.</p>
+                        <a href="#" class="detail-link" target="_blank">📄 Ver guía de preparación →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 2 -->
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content" onclick="toggleDetail(this)">
+                    <div class="step-header">
+                        <div class="step-icon">💻</div>
+                        <div class="step-title">Ingreso a Plataforma SGCA</div>
+                    </div>
+                    <p class="step-description">Acceder con credenciales institucionales a Smartcampus (SGCA).</p>
+                    <div class="click-hint">👆 Clic para más detalles</div>
+                    <div class="step-detail">
+                        <p>Ingrese a la plataforma SGCA a través de Smartcampus con su usuario y contraseña institucional. La plataforma está disponible todo el año.</p>
+                        <a href="#" class="detail-link" target="_blank">🔗 Ir a Smartcampus →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 3 -->
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content" onclick="toggleDetail(this)">
+                    <div class="step-header">
+                        <div class="step-icon">📤</div>
+                        <div class="step-title">Carga de Información</div>
+                    </div>
+                    <p class="step-description">Ingresar antecedentes en el CV USS y adjuntar evidencias en cada sección.</p>
+                    <div class="click-hint">👆 Clic para más detalles</div>
+                    <div class="step-detail">
+                        <p>Complete cada sección del CV USS cuidadosamente. Adjunte las evidencias correspondientes en formato PDF. Verifique que toda la información esté correcta antes de continuar.</p>
+                        <a href="#" class="detail-link" target="_blank">📋 Ver formato de CV USS →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 4 -->
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content" onclick="toggleDetail(this)">
+                    <div class="step-header">
+                        <div class="step-icon">🎯</div>
+                        <div class="step-title">Inicio de Postulación</div>
+                    </div>
+                    <p class="step-description">Seleccionar la jerarquía a la que postula, completar fundamentos y adjuntar la carta de postulación.</p>
+                    <div class="click-hint">👆 Clic para más detalles</div>
+                    <div class="step-detail">
+                        <p>Seleccione cuidadosamente la jerarquía académica a la que desea postular. Redacte los fundamentos de su postulación y adjunte la carta correspondiente.</p>
+                        <a href="#" class="detail-link" target="_blank">📝 Ver requisitos por jerarquía →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 5 -->
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content" onclick="toggleDetail(this)">
+                    <div class="step-header">
+                        <div class="step-icon">✈️</div>
+                        <div class="step-title">Envío de Postulación</div>
+                    </div>
+                    <p class="step-description">Revisar cuidadosamente toda la información y confirmar el envío de la postulación.</p>
+                    <div class="click-hint">👆 Clic para más detalles</div>
+                    <div class="step-detail">
+                        <p>⚠️ <strong>Importante:</strong> Una vez enviada la postulación, no podrá modificar los antecedentes hasta que finalice la evaluación. Revise todo antes de confirmar.</p>
+                        <a href="#" class="detail-link" target="_blank">✅ Checklist de revisión →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 6 -->
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content" onclick="toggleDetail(this)">
+                    <div class="step-header">
+                        <div class="step-icon">🔍</div>
+                        <div class="step-title">Evaluación por Comisión</div>
+                    </div>
+                    <p class="step-description">Análisis de la trayectoria por la Comisión de Jerarquización de Facultad (CJF) y/o Comisión Institucional (CIJ) según corresponda.</p>
+                    <div class="click-hint">👆 Clic para más detalles</div>
+                    <div class="step-detail">
+                        <p>Las Comisiones evalúan con criterios de objetividad, coherencia y equidad. El proceso puede tomar varias semanas dependiendo del volumen de postulaciones.</p>
+                        <a href="#" class="detail-link" target="_blank">📊 Ver criterios de evaluación →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 7 -->
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-content" onclick="toggleDetail(this)">
+                    <div class="step-header">
+                        <div class="step-icon">⭐</div>
+                        <div class="step-title">Resolución</div>
+                    </div>
+                    <p class="step-description">La comisión define la jerarquía académica según los criterios establecidos.</p>
+                    <div class="click-hint">👆 Clic para más detalles</div>
+                    <div class="step-detail">
+                        <p>La resolución se basa en el análisis integral de su trayectoria académica, investigativa y de gestión. Revise periódicamente el estado de su postulación en la plataforma.</p>
+                        <a href="#" class="detail-link" target="_blank">📖 Ver reglamento →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 8 -->
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-content" onclick="toggleDetail(this)">
+                    <div class="step-header">
+                        <div class="step-icon">📬</div>
+                        <div class="step-title">Notificación</div>
+                    </div>
+                    <p class="step-description">El resultado es comunicado mediante carta formal al correo institucional y disponible en la plataforma.</p>
+                    <div class="click-hint">👆 Clic para más detalles</div>
+                    <div class="step-detail">
+                        <p>Recibirá una notificación por correo electrónico institucional. También podrá consultar el resultado directamente en el módulo de Jerarquización de SGCA.</p>
+                        <a href="#" class="detail-link" target="_blank">📧 Verificar correo institucional →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 9 -->
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-content" onclick="toggleDetail(this)">
+                    <div class="step-header">
+                        <div class="step-icon">📜</div>
+                        <div class="step-title">Formalización</div>
+                    </div>
+                    <p class="step-description">En caso de aprobación, se emite el decreto que formaliza la jerarquía académica.</p>
+                    <div class="click-hint">👆 Clic para más detalles</div>
+                    <div class="step-detail">
+                        <p>El decreto es el documento oficial que certifica su nueva jerarquía académica. Este será emitido por la autoridad competente y estará disponible para descarga.</p>
+                        <a href="#" class="detail-link" target="_blank">🏛️ Ver información del decreto →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 10 -->
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-content" onclick="toggleDetail(this)">
+                    <div class="step-header">
+                        <div class="step-icon">💡</div>
+                        <div class="step-title">Seguimiento Posterior</div>
+                    </div>
+                    <p class="step-description">Descargar el decreto en la plataforma y preparar futuras postulaciones.</p>
+                    <div class="click-hint">👆 Clic para más detalles</div>
+                    <div class="step-detail">
+                        <p>Descargue su decreto desde la plataforma SGCA. Mantenga actualizado su CV y continúe documentando su trayectoria para futuras postulaciones.</p>
+                        <a href="#" class="detail-link" target="_blank">📥 Descargar decreto →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPLETION BOX -->
+            <div class="completion-box">
+                <div class="check-icon">✅</div>
+                <h3>Proceso Completado</h3>
+                <p>La jerarquía queda formalizada.</p>
+            </div>
+
+        </div>
+
+        <!-- SIDEBAR (Right Column) -->
+        <div class="sidebar">
+
+            <!-- CLAVES DEL PROCESO -->
+            <div class="sidebar-card">
+                <h3>🔑 Claves del Proceso</h3>
+
+                <div class="sidebar-item">
+                    <div class="sidebar-icon">📅</div>
+                    <p>La plataforma está disponible todo el año. Postule cuando tenga sus antecedentes listos.</p>
+                </div>
+
+                <div class="sidebar-item">
+                    <div class="sidebar-icon">🔒</div>
+                    <p>Una vez enviada la postulación, no podrá modificar los antecedentes hasta que finalice la evaluación.</p>
+                </div>
+
+                <div class="sidebar-item">
+                    <div class="sidebar-icon">⚖️</div>
+                    <p>Las Comisiones evalúan con criterios de objetividad, coherencia y equidad.</p>
+                </div>
+
+                <div class="sidebar-item">
+                    <div class="sidebar-icon">🔄</div>
+                    <p>Revise periódicamente el estado de su postulación en la plataforma.</p>
+                </div>
+            </div>
+
+            <!-- DONDE HACER SEGUIMIENTO -->
+            <div class="sidebar-card">
+                <h3>📍 ¿Dónde Hacer Seguimiento?</h3>
+                <div class="sidebar-item">
+                    <div class="sidebar-icon">🖥️</div>
+                    <p>En SGCA (Smartcampus) módulo de Jerarquización, podrá ver el estado de su postulación en cada etapa del proceso.</p>
+                </div>
+                <a href="#" class="detail-link" style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    margin-top: 10px;
+                    padding: 10px 18px;
+                    background: linear-gradient(135deg, #0b2545, #134074);
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 8px;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                    width: 100%;
+                    justify-content: center;
+                " target="_blank">🔗 Ir a Smartcampus</a>
+            </div>
+
+            <!-- NECESITAS APOYO -->
+            <div class="sidebar-card support-card">
+                <h3>🤝 ¿Necesitas Apoyo?</h3>
+                <div class="sidebar-item">
+                    <div class="sidebar-icon" style="background: linear-gradient(135deg, #d4af37, #b8960c);">📞</div>
+                    <p>Contacta a la Dirección de Desarrollo Académico:</p>
+                </div>
+                <a href="mailto:jerarquizacion@uss.cl" class="email-link">
+                    ✉️ jerarquizacion@uss.cl
+                </a>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #5a6a7a;">Estamos para ayudarte.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER NOTE -->
+    <div class="footer-note">
+        <span class="warning-icon">⚠️</span>
+        <p><strong>IMPORTANTE:</strong> Cada caso es único y los tiempos pueden variar según la carga de cada comisión. Le recomendamos revisar esta guía y los <strong>anexos disponibles</strong>.</p>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function toggleDetail(element) {
+            const detail = element.querySelector('.step-detail');
+            const hint = element.querySelector('.click-hint');
+
+            // Close all other details
+            document.querySelectorAll('.step-detail.active').forEach(d => {
+                if (d !== detail) {
+                    d.classList.remove('active');
+                    d.closest('.step-content').querySelector('.click-hint').textContent = '👆 Clic para más detalles';
+                    d.closest('.step-content').querySelector('.click-hint').style.color = '#d4af37';
+                }
+            });
+
+            // Toggle current
+            detail.classList.toggle('active');
+
+            if (detail.classList.contains('active')) {
+                hint.textContent = '👆 Clic para cerrar';
+                hint.style.color = '#e53e3e';
+            } else {
+                hint.textContent = '👆 Clic para más detalles';
+                hint.style.color = '#d4af37';
+            }
+        }
+
+        // Add hover effect for sidebar links
+        document.querySelectorAll('.detail-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
